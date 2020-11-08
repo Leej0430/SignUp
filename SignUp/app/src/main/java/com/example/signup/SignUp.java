@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Editable;
@@ -37,7 +39,12 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         Drawable red_x = getApplicationContext().getResources().getDrawable(R.drawable.red_x);
         Drawable green_check = getApplicationContext().getResources().getDrawable(R.drawable.check);
-
+        Bitmap bitmap = ((BitmapDrawable) red_x).getBitmap();
+        Drawable resize_red_x = new BitmapDrawable(getResources(),
+                Bitmap.createScaledBitmap(bitmap,
+                        30,
+                        30,
+                        true));
         et_email = (EditText)findViewById(R.id.et_address);
         error1 =(TextView)findViewById(R.id.error1);
         et_email.addTextChangedListener(new TextWatcher() {
@@ -54,7 +61,7 @@ public class SignUp extends AppCompatActivity {
                     enable();
                     et_email.setBackgroundResource(R.drawable.red_edittext);
                     error1.setVisibility(View.VISIBLE);
-                    et_email.setCompoundDrawablesWithIntrinsicBounds(null,null,red_x,null);
+                    et_email.setCompoundDrawablesWithIntrinsicBounds(null,null,resize_red_x,null);
                 }
 
                 else{
@@ -95,7 +102,7 @@ public class SignUp extends AppCompatActivity {
                     enable();
                     error2.setVisibility(View.VISIBLE);
                     et_password.setBackgroundResource(R.drawable.red_edittext);
-                   et_password.setCompoundDrawablesWithIntrinsicBounds(null,null,red_x,null);
+                   et_password.setCompoundDrawablesWithIntrinsicBounds(null,null,resize_red_x,null);
                 }
                 else{
                     flag2=true;
@@ -135,7 +142,7 @@ public class SignUp extends AppCompatActivity {
                     enable();
                     error3.setVisibility(View.VISIBLE);
                     et_r_password.setBackgroundResource(R.drawable.red_edittext);
-                    et_r_password.setCompoundDrawablesWithIntrinsicBounds(null,null,red_x,null);
+                    et_r_password.setCompoundDrawablesWithIntrinsicBounds(null,null,resize_red_x,null);
                 }
                 else{
                     flag3=true;

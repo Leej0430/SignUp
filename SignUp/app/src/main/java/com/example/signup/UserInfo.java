@@ -2,18 +2,23 @@ package com.example.signup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class UserInfo extends AppCompatActivity {
     EditText et_Date;
+    EditText et_Age;
     Calendar myCalender = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener myDatePicker = new DatePickerDialog.OnDateSetListener() {
         @Override
@@ -44,6 +49,14 @@ public class UserInfo extends AppCompatActivity {
                       myCalender.get(Calendar.DAY_OF_MONTH));
             }
             });
+        et_Age =(EditText) findViewById(R.id.et_age2);
+        et_Age.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show();
+            }
+        });
+
 
     }
 
@@ -64,5 +77,28 @@ public class UserInfo extends AppCompatActivity {
         EditText et_age = (EditText) findViewById(R.id.et_age);
         et_age.setText(Integer.toString(age));
 
+    }
+    void show(){
+        final List<String> CountryList = new ArrayList<>();
+        CountryList.add("Not-Specified");
+        CountryList.add("Malaysia");
+        CountryList.add("United States");
+        CountryList.add("Indonesia");
+        CountryList.add("France");
+        CountryList.add("Italy");
+        CountryList.add("Singapore");
+        CountryList.add("New Zealand");
+        CountryList.add("India");
+        final CharSequence[] items = CountryList.toArray(new String [CountryList.size()]);
+        AlertDialog.Builder lst = new AlertDialog.Builder(this);
+        lst.setTitle("Choose a Country");
+        lst.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            String selectedText = items[which].toString();
+            et_Age.setText(selectedText);
+            }
+        });
+        lst.show();
     }
 }
