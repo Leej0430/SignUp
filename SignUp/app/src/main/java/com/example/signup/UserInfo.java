@@ -1,7 +1,9 @@
 package com.example.signup;
+/**
+ * @author: JuneYeob Lee
+ */
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
@@ -9,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,8 +21,10 @@ public class UserInfo extends AppCompatActivity {
     EditText et_Date;
     EditText et_Age;
     Calendar myCalender = Calendar.getInstance();
+
     DatePickerDialog.OnDateSetListener myDatePicker = new DatePickerDialog.OnDateSetListener() {
         @Override
+
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             myCalender.set(Calendar.YEAR,year);
             myCalender.set(Calendar.MONTH,month);
@@ -60,6 +63,9 @@ public class UserInfo extends AppCompatActivity {
 
     }
 
+    /**
+     * The method update the "Day of Birth" Edit text
+     */
     private void updateEditText(){
         String myFormat ="yyyy/MM/dd";
         android.icu.text.SimpleDateFormat ymd = new android.icu.text.SimpleDateFormat(myFormat,
@@ -67,6 +73,10 @@ public class UserInfo extends AppCompatActivity {
         EditText et_date =(EditText) findViewById(R.id.et_birth);
         et_date.setText(ymd.format(myCalender.getTime()));
     }
+
+    /**
+     *  The method will calculate the age of user and update the "Age" edit text
+     */
     private void dateOfbirth(int birthyear, int birthmonth, int birthday){
         Calendar temp = Calendar.getInstance();
         int year =  temp.get(Calendar.YEAR);
@@ -78,6 +88,11 @@ public class UserInfo extends AppCompatActivity {
         et_age.setText(Integer.toString(age));
 
     }
+
+    /**
+     * Method "show" will pop up the list of
+     * countries when the user click on the "Not-Specified" Edit text
+     */
     void show(){
         final List<String> CountryList = new ArrayList<>();
         CountryList.add("Not-Specified");

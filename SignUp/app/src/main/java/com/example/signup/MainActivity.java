@@ -1,4 +1,8 @@
 package com.example.signup;
+/**
+ * @author: JuneYeob Lee
+ *
+ */
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,9 +21,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//       delete action bar
-//        ActionBar bar = getSupportActionBar();
-//        bar.hide();
         Button imageButton = (Button) findViewById(R.id.btn_createaccount);
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override

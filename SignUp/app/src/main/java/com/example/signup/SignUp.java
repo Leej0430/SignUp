@@ -1,4 +1,7 @@
 package com.example.signup;
+/**
+ * @author: JuneYeob Lee
+ */
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -193,6 +196,12 @@ public class SignUp extends AppCompatActivity {
     public void enable(){
         nextButton.setEnabled(flag1&&flag2&&flag3);
     }
+
+    /**
+     * Checking the Password is valid
+     * @param c second Edit text's sequence of characters
+     * @return validity of the password
+     */
     public boolean pwCheck(CharSequence c){
         if(c.length()<8) return false;
         boolean num =false;
